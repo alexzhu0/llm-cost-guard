@@ -4,9 +4,9 @@ target_user: LLM application engineers
 pain_point: Prompt cost surprises are easy to miss before deployment.
 demo_command: PYTHONPATH=src python3 -m llm_cost_guard examples/prompt.txt --rate 0.000005
 tier: baseline
-maturity_status: hardened-2026-05-31
-next_release: v0.1.1
-polish_score: 80
+maturity_status: support-aligned-2026-05-31
+next_release: v0.1.2
+polish_score: 82
 topics:
   - ai-tools
   - llmops
@@ -18,9 +18,9 @@ release_channel:
   - github
   - relevant-developer-communities
 launch_copy:
-  - I built llm-cost-guard: Estimate prompt token cost and flag expensive LLM inputs locally.
+  - I built llm-cost-guard as a CI budget guard for long prompts and coding-agent context.
   - The pain: Prompt cost surprises are easy to miss before deployment.
-  - Try it with: PYTHONPATH=src python3 -m llm_cost_guard examples/prompt.txt --rate 0.000005
+  - Try it with: PYTHONPATH=src python3 -m llm_cost_guard examples/prompt.txt --model generic --budget 0.001
 quality_gate:
   commands:
     - python3 -m unittest discover -s tests

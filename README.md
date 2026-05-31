@@ -64,6 +64,12 @@ Use the CLI first. Import the Python functions when you want to embed the same b
 
 It is a fast local cost sanity check before prompts reach production.
 
+## Used With
+
+- Run as a CI budget guard for long prompts and coding-agent context files.
+- Pair with `repo-to-ai-brief` to keep generated briefs inside a practical token budget.
+- Keep this as a supporting utility; the stronger public story is budget discipline for agent workflows.
+
 ## Roadmap
 
 See [ROADMAP.md](ROADMAP.md).
