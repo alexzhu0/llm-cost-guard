@@ -1,12 +1,12 @@
-# Llm Cost Guard
+# LLM Cost Guard
 
 Estimate prompt token cost and flag expensive LLM inputs locally.
 
 ## Why
 
-Prompt cost surprises are easy to miss before deployment.
+Prompt cost surprises are easy to miss before deployment, especially with long agent context.
 
-This repository is intentionally small: it should be useful in one command, easy to inspect, and simple to fork.
+This is a baseline HighStar AI developer tool: dependency-light, local-first, and built around one quick command.
 
 ## Install
 
@@ -19,32 +19,78 @@ PYTHONPATH=src python3 -m unittest discover -s tests
 ## Quickstart
 
 ```bash
-PYTHONPATH=src python3 -m llm_cost_guard examples/prompt.txt --rate 0.000005
+PYTHONPATH=src python3 -m llm_cost_guard examples/prompt.txt --model generic --budget 0.001
 ```
 
 ## Examples
 
+Human-readable output:
+
 ```bash
-PYTHONPATH=src python3 -m llm_cost_guard examples/prompt.txt --rate 0.000005
+PYTHONPATH=src python3 -m llm_cost_guard examples/prompt.txt --model generic --budget 0.001
 ```
+
+Machine-readable output:
+
+```bash
+PYTHONPATH=src python3 -m llm_cost_guard examples/prompt.txt --model generic --format json
+```
+
+## CLI Reference
+
+- `PYTHONPATH=src python3 -m llm_cost_guard --help`
+- Main demo: `PYTHONPATH=src python3 -m llm_cost_guard examples/prompt.txt --model generic --budget 0.001`
+- CI gate: `PYTHONPATH=src python3 -m unittest discover -s tests`
+
+## Features
+
+- Local token approximation
+- Model rate presets
+- Manual rate override
+- Budget threshold status
+- Text and JSON output
 
 ## API
 
-The first release is CLI-first. Public Python APIs can be added after real usage proves the right shape.
+The public Python surface is intentionally small:
+
+```python
+from llm_cost_guard.cli import analyze_cost
+```
+
+Use the CLI first. Import the Python functions when you want to embed the same behavior in a larger tool.
+
+## Why Star This
+
+It is a fast local cost sanity check before prompts reach production.
+
+## Roadmap
+
+See [ROADMAP.md](ROADMAP.md).
 
 ## FAQ
 
 **Does this call external AI APIs?**
 
-No. The generated starter uses the Python standard library only.
+No. The current release uses the Python standard library only.
 
 **Is this production-ready?**
 
-Treat `v0.1.0` as a focused utility release. Pin versions and review output before adding it to CI.
+Treat this as a focused utility. Run it in CI or local review first, then adapt thresholds and examples to your workflow.
+
+**Can I contribute examples?**
+
+Yes. The most useful issue or pull request includes a real input file, expected output, and the workflow where it helps.
 
 ## Contributing
 
 Issues and pull requests are welcome when they include a concrete use case or failing example.
+
+Run tests before opening a pull request:
+
+```bash
+PYTHONPATH=src python3 -m unittest discover -s tests
+```
 
 ## License
 

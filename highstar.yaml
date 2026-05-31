@@ -3,6 +3,10 @@ one_liner: Estimate prompt token cost and flag expensive LLM inputs locally.
 target_user: LLM application engineers
 pain_point: Prompt cost surprises are easy to miss before deployment.
 demo_command: PYTHONPATH=src python3 -m llm_cost_guard examples/prompt.txt --rate 0.000005
+tier: baseline
+maturity_status: hardened-2026-05-31
+next_release: v0.1.1
+polish_score: 80
 topics:
   - ai-tools
   - llmops
